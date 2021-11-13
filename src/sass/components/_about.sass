@@ -1,0 +1,23 @@
+.about
+    @include adaptiv-value('padding-top', 100, 50, 1)
+    @include adaptiv-value('padding-bottom', 100, 50, 1)
+    background-color: #F6F6F6
+    &__container
+        max-width: 800px
+    &__body
+        display: flex
+        flex-direction: column
+        text-align: center
+    &__title
+        font-size: 34px
+        line-height: calc(42px/34px * 100%)
+        &:not(:last-child)
+            margin-bottom: 20px/34px * 1em
+    &__text
+        @include adaptiv-value('font-size', 18, 16, 1)
+        line-height: calc(22px/18px * 100%)
+        span
+            font-weight: 500
+            display: block
+            &:not(:last-child)
+                margin-bottom: 30px/18px * 1em

@@ -1,0 +1,56 @@
+.main
+    padding-top: 110px
+    @include adaptiv-value('padding-bottom', 100, 50, 1)
+    @media (max-width: $md3 + px) //Less 768
+       padding-top: 30px
+    &__container
+        display: flex
+        flex-direction: column
+    &__body
+        display: flex
+        align-items: flex-end
+        justify-content: space-between
+        &:not(:last-child)
+            @include adaptiv-value('margin-bottom', 50, 25, 1)
+        @media (max-width: $md3 + px) //Less 768
+           flex-direction: column
+           justify-content: flex-start
+           align-items: flex-start
+    &__name
+        font-size: 47.3392px
+        line-height: calc(59px/47px * 100%)
+        padding-right: 10px
+        @media (max-width: $md3 + px) //Less 768
+           margin-bottom: 20px
+    &__ocupation
+        font-size: 18px
+        line-height: 122%
+        font-weight: 500
+    &__lang
+        display: flex
+        align-items: flex-start
+        text-transform: uppercase
+        transform: rotate(-90deg) translateX(20px)
+
+        font-size: 16px
+        line-height: calc(20px/16px * 100%)
+        @media (max-width: $md3 + px) //Less 768
+           display: none    
+        span
+            position: relative
+            &:not(:last-child)
+                margin-right: 10px
+                &::after
+                    right: -12px
+                    top: 15px
+                    position: absolute
+                    content: ''
+                    height: 2px
+                    width: 15px
+                    display: block
+                    background: #000
+                    transform: rotate(90deg) translateX(-5px)
+    &__image
+        padding: 0 0 34.8% 0
+        @media (max-width: $md3 + px) //Less 768
+           padding: 0 0 70% 0
