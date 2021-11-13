@@ -58,6 +58,8 @@
             background: rgba(255, 255, 255, 1)
             overflow: auto
             display: flex
+            flex-direction: column
+            align-items: flex-start
             z-index: 60
             transition: all 0.3s ease 0s
             &._active
@@ -124,3 +126,13 @@
                 &:last-child 
                     transform: rotate(45deg)
                     bottom: calc(50% - 1px)
+
+.menu__lang
+    align-self: flex-end
+    display: flex
+    align-items: center
+    padding-left: 30px
+    span
+        font-size: 27px
+    @media (min-width: $md3 + px)//More 768
+       display: none

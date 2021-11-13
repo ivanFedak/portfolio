@@ -255,6 +255,22 @@ body.ie ._ibg img {
   display: none;
 }
 
+.menu__lang {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 30px;
+}
+
+.menu__lang span {
+  font-size: 27px;
+}
+
 .main {
   padding-top: 110px;
   padding-bottom: 100px;
@@ -305,34 +321,22 @@ body.ie ._ibg img {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  gap: 5px;
   text-transform: uppercase;
   -webkit-transform: rotate(-90deg) translateX(20px);
       -ms-transform: rotate(-90deg) translateX(20px);
           transform: rotate(-90deg) translateX(20px);
-  font-size: 16px;
+  font-size: 22px;
   line-height: 125%;
+  cursor: pointer;
+}
+
+.main__lang .lang_active {
+  color: #070707;
 }
 
 .main__lang span {
-  position: relative;
-}
-
-.main__lang span:not(:last-child) {
-  margin-right: 10px;
-}
-
-.main__lang span:not(:last-child)::after {
-  right: -12px;
-  top: 15px;
-  position: absolute;
-  content: "";
-  height: 2px;
-  width: 15px;
-  display: block;
-  background: #000;
-  -webkit-transform: rotate(90deg) translateX(-5px);
-      -ms-transform: rotate(90deg) translateX(-5px);
-          transform: rotate(90deg) translateX(-5px);
+  color: #828282;
 }
 
 .main__image {
@@ -692,6 +696,10 @@ body.ie ._ibg img {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
+
+  .menu__lang {
+    display: none;
+  }
 }
 
 @media (min-width: 767.98px) and (any-hover: hover) {
@@ -810,6 +818,13 @@ body.ie ._ibg img {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
     z-index: 60;
     -webkit-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;
@@ -908,7 +923,7 @@ body.ie ._ibg img {
     margin-bottom: 20px;
   }
 
-  .main__lang {
+  .main__lang_hide {
     display: none;
   }
 

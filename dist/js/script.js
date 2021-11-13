@@ -2,6 +2,65 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/js/components/language.js":
+/*!***************************************!*\
+  !*** ./src/js/components/language.js ***!
+  \***************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const language = () => {
+  const html = document.querySelector('html');
+  const btn = document.querySelectorAll('.main__lang span');
+  btn.forEach(item => {
+    item.addEventListener('click', function (e) {
+      localStorage.setItem('langStor', item.textContent);
+      window.location.reload();
+    });
+
+    if (item.textContent == localStorage.getItem('langStor')) {
+      item.classList.add('lang_active');
+    }
+  });
+  html.setAttribute('lang', localStorage.getItem('langStor'));
+  const currentLang = html.getAttribute('lang');
+
+  if (currentLang == 'ru') {
+    //Header
+    document.querySelector('.menu__list').innerHTML = `
+            <li class='menu__item'><a href='#' class='menu__link' data-goto=".main">Главная</a></li>
+            <li class='menu__item'><a href='#' class='menu__link' data-goto=".about">Обо мне</a></li>
+            <li class='menu__item'><a href='#' class='menu__link' data-goTo=".skills">Навыки</a></li>
+            <li class='menu__item'><a href='#' class='menu__link' data-goto=".portfolio">Работы</a></li>
+            <li class='menu__item'><a href='#' class='menu__link' data-goto="footer">Контакты</a></li>
+        `; //Main
+
+    document.querySelector('.main__name').innerHTML = `Иван <br> Федак`;
+    document.querySelector('.main__ocupation').innerHTML = `Веб | Фронтенд Разработчик <br> 16 лет, Мукачево`; //About
+
+    document.querySelector('.about__title').textContent = `Обо мне`;
+    document.querySelector('.about__text').innerHTML = `
+            <span>Привет, Меня зовут Иван – Я Веб/Фронтенд разработчик из Украины. Интересуюсь веб-разработкой и всем, что с ней связано. </span>
+            <span>Прошел много курсов на площадке "Udemy". Имею 2 года опыта работы в этой области.</span>
+            <span>Всегда готов создать Веб сайт или Веб приложение для вас.</span>
+        `; //Skills
+
+    document.querySelector('.skills__title').textContent = `Навыки`;
+    document.querySelector('.skills__text').textContent = `Работаю с такими технологиями как...`; //Portfolio
+
+    document.querySelector('.portfolio__title').textContent = `Мои работы`; //Footer
+
+    document.querySelector('.footer__title').textContent = `Контакты`;
+    document.querySelector('.footer__text').innerHTML = ` Хотите узнать больше? <br> Обращайтесь!`;
+    document.querySelector('.footer__btn').textContent = `Написать`;
+    document.querySelector('.footer__descr').innerHTML = `Также посмотрите мои <br> Instagram, Facebook`;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (language);
+
+/***/ }),
+
 /***/ "./src/js/components/portfolio.js":
 /*!****************************************!*\
   !*** ./src/js/components/portfolio.js ***!
@@ -587,6 +646,55 @@ const scroll = () => {
 
 /* harmony default export */ __webpack_exports__["default"] = (scroll);
 
+/***/ }),
+
+/***/ "./src/js/services/default.js":
+/*!************************************!*\
+  !*** ./src/js/services/default.js ***!
+  \************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const def = () => {
+  var ua = window.navigator.userAgent;
+  var isMobile = {
+    Android: function () {
+      return navigator.userAgent.match(/Android/i);
+    },
+    BlackBerry: function () {
+      return navigator.userAgent.match(/BlackBerry/i);
+    },
+    iOS: function () {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+    },
+    Opera: function () {
+      return navigator.userAgent.match(/Opera Mini/i);
+    },
+    Windows: function () {
+      return navigator.userAgent.match(/IEMobile/i);
+    },
+    any: function () {
+      return isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows();
+    }
+  };
+
+  function isIE() {
+    ua = navigator.userAgent;
+    var is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
+    return is_ie;
+  }
+
+  if (isIE()) {
+    document.querySelector('html').classList.add('ie');
+  }
+
+  if (isMobile.any()) {
+    document.querySelector('html').classList.add('_touch');
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (def);
+
 /***/ })
 
 /******/ 	});
@@ -635,13 +743,17 @@ var __webpack_exports__ = {};
   !*** ./src/js/main.js ***!
   \************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
-/* harmony import */ var _libs_spoller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./libs/spoller */ "./src/js/libs/spoller.js");
-/* harmony import */ var _libs_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./libs/slider */ "./src/js/libs/slider.js");
-/* harmony import */ var _libs_tests__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./libs/tests */ "./src/js/libs/tests.js");
-/* harmony import */ var _modules_header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/header */ "./src/js/modules/header.js");
-/* harmony import */ var _modules_scroll__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/scroll */ "./src/js/modules/scroll.js");
-/* harmony import */ var _components_portfolio__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/portfolio */ "./src/js/components/portfolio.js");
+/* harmony import */ var _components_language__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/language */ "./src/js/components/language.js");
+/* harmony import */ var _services_default__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/default */ "./src/js/services/default.js");
+/* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
+/* harmony import */ var _libs_spoller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./libs/spoller */ "./src/js/libs/spoller.js");
+/* harmony import */ var _libs_slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./libs/slider */ "./src/js/libs/slider.js");
+/* harmony import */ var _libs_tests__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./libs/tests */ "./src/js/libs/tests.js");
+/* harmony import */ var _modules_header__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modules/header */ "./src/js/modules/header.js");
+/* harmony import */ var _modules_scroll__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/scroll */ "./src/js/modules/scroll.js");
+/* harmony import */ var _components_portfolio__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/portfolio */ "./src/js/components/portfolio.js");
+
+
 
 
 
@@ -651,14 +763,16 @@ __webpack_require__.r(__webpack_exports__);
  // import getResource from './services/request'
 
 window.onload = function () {
-  (0,_libs_tests__WEBPACK_IMPORTED_MODULE_3__["default"])();
-  (0,_modules_burger__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  (0,_libs_spoller__WEBPACK_IMPORTED_MODULE_1__["default"])();
-  (0,_libs_slider__WEBPACK_IMPORTED_MODULE_2__["default"])();
-  (0,_modules_header__WEBPACK_IMPORTED_MODULE_4__["default"])();
-  (0,_modules_scroll__WEBPACK_IMPORTED_MODULE_5__["default"])(); //Buid
+  (0,_components_language__WEBPACK_IMPORTED_MODULE_0__["default"])();
+  (0,_libs_tests__WEBPACK_IMPORTED_MODULE_5__["default"])();
+  (0,_services_default__WEBPACK_IMPORTED_MODULE_1__["default"])(); //Buid
 
-  (0,_components_portfolio__WEBPACK_IMPORTED_MODULE_6__["default"])();
+  (0,_components_portfolio__WEBPACK_IMPORTED_MODULE_8__["default"])();
+  (0,_modules_burger__WEBPACK_IMPORTED_MODULE_2__["default"])(); // spoller();
+  // slider();
+
+  (0,_modules_header__WEBPACK_IMPORTED_MODULE_6__["default"])();
+  (0,_modules_scroll__WEBPACK_IMPORTED_MODULE_7__["default"])();
 };
 }();
 /******/ })()

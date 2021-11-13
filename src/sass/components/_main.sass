@@ -29,27 +29,20 @@
     &__lang
         display: flex
         align-items: flex-start
+        gap: 5px
         text-transform: uppercase
         transform: rotate(-90deg) translateX(20px)
-
-        font-size: 16px
+        font-size: 22px
         line-height: calc(20px/16px * 100%)
-        @media (max-width: $md3 + px) //Less 768
-           display: none    
+        cursor: pointer
+        .lang_active
+            color: $mainColor
+        &_hide
+            @media (max-width: $md3 + px) //Less 768
+                display: none
         span
-            position: relative
-            &:not(:last-child)
-                margin-right: 10px
-                &::after
-                    right: -12px
-                    top: 15px
-                    position: absolute
-                    content: ''
-                    height: 2px
-                    width: 15px
-                    display: block
-                    background: #000
-                    transform: rotate(90deg) translateX(-5px)
+            color: $gray
+
     &__image
         padding: 0 0 34.8% 0
         @media (max-width: $md3 + px) //Less 768

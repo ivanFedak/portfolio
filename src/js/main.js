@@ -1,3 +1,5 @@
+import language from './components/language'
+import def from './services/default'
 
 import burger from './modules/burger'
 import spoller from './libs/spoller'
@@ -13,14 +15,17 @@ import portfolio from './components/portfolio'
 
 
 window.onload = function (){
-
+    language();
     tests();
+    def();
+    //Buid
+    portfolio();
+
     burger();
-    spoller();
-    slider();
+    // spoller();
+    // slider();
     header();
     scroll();
 
-    //Buid
-    portfolio();
+   
 }
