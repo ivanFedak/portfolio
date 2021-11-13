@@ -12,6 +12,13 @@ __webpack_require__.r(__webpack_exports__);
 const language = () => {
   const html = document.querySelector('html');
   const btn = document.querySelectorAll('.main__lang span');
+
+  function removeClass() {
+    btn.forEach(item => {
+      item.classList.remove('lang_active');
+    });
+  }
+
   btn.forEach(item => {
     item.addEventListener('click', function (e) {
       localStorage.setItem('langStor', item.textContent);
@@ -19,6 +26,7 @@ const language = () => {
     });
 
     if (item.textContent == localStorage.getItem('langStor')) {
+      removeClass();
       item.classList.add('lang_active');
     }
   });
