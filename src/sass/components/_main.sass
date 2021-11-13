@@ -37,12 +37,12 @@
         cursor: pointer
         .lang_active
             color: $mainColor
-        &_hide
-            @media (max-width: $md3 + px) //Less 768
-                display: none
         span
             color: $gray
-
+        @media (max-width: $md3 + px) //Less 768 Dynamic
+           align-self: flex-end
+           padding-left: 30px
+           font-size: 26px  
     &__image
         padding: 0 0 34.8% 0
         @media (max-width: $md3 + px) //Less 768

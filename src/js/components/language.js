@@ -29,7 +29,7 @@ const language = ()=>{
 
 
 
-    if(currentLang == 'ru'){
+        if(currentLang == 'ru'){
 
     //Header
         document.querySelector('.menu__list').innerHTML = `

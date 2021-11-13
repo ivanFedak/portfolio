@@ -4,6 +4,7 @@ import def from './services/default'
 import burger from './modules/burger'
 import spoller from './libs/spoller'
 import slider from './libs/slider'
+import dynamicAdaptive from './libs/dinamycAdaptiv'
 import tests from './libs/tests'
 import header from './modules/header'
 import scroll from './modules/scroll'
@@ -24,6 +25,7 @@ window.onload = function (){
     burger();
     // spoller();
     // slider();
+    dynamicAdaptive();
     header();
     scroll();
 

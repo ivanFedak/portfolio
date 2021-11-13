@@ -2,19 +2,34 @@ const portfolio = ()=>{
     
     const db = [
         {
-            href: '#',
-            img: '01.png',
-            title: 'Online fashion store - Homepage',
+            href: 'https://ivan20050120.github.io/paper/',
+            img: 'papperGame.jpg',
+            title: 'Rock-Paper-Scissors-Master',
         },
         {
-            href: '#',
-            img: '02.png',
-            title: 'Reebok Store - Concept',
+            href: 'https://ivan20050120.github.io/healthy/',
+            img: 'healthy.jpg',
+            title: 'Stay healthy landing page',
         },
         {
-            href: '#',
-            img: '03.png',
-            title: 'Braun Landing Page - Concept',
+            href: 'https://ivan20050120.github.io/pay/',
+            img: 'pay.png',
+            title: 'Money Transfer & Online Payments',
+        },
+        {
+            href: 'https://ivan20050120.github.io/relvise/',
+            img: 'relvise.png',
+            title: 'Finance and Consultancy Solution Landing Page',
+        },
+        {
+            href: 'https://ivan20050120.github.io/wordCounter/',
+            img: 'wordCounter.png',
+            title: 'Word Counter App',
+        },
+        {
+            href: 'https://ivan20050120.github.io/background/',
+            img: 'color.png',
+            title: 'Backround Color changer App',
         },
     ]
 
@@ -29,11 +44,11 @@ const portfolio = ()=>{
 
             card.innerHTML = `
     
-                <a href="${href}" class="portfolio__image _ibg">
+                <a href="${href}" target="_blank" class="portfolio__image _ibg">
                     <img src="./img/portfolio/${img}" alt="${title}">
                 </a>
                 <div class="portfolio__contnet">
-                    <a href="${href}" class="portfolio__link">${title}</a>
+                    <a href="${href}"  target="_blank"class="portfolio__link">${title}</a>
                 </div>
                 
             `

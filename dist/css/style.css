@@ -84,6 +84,10 @@ body {
   font-size: 16px;
 }
 
+body {
+  background: #fff;
+}
+
 ._container {
   max-width: 1180px;
   padding: 0 15px;
@@ -923,8 +927,11 @@ body.ie ._ibg img {
     margin-bottom: 20px;
   }
 
-  .main__lang_hide {
-    display: none;
+  .main__lang {
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+    padding-left: 30px;
+    font-size: 26px;
   }
 
   .main__image {
