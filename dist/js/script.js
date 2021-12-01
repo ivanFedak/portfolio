@@ -860,6 +860,78 @@ const scroll = () => {
 
 /***/ }),
 
+/***/ "./src/js/modules/swipeBurger2.js":
+/*!****************************************!*\
+  !*** ./src/js/modules/swipeBurger2.js ***!
+  \****************************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+const swipeBurger2 = () => {
+  // usage example
+  detectSwipe('.main', (el, up) => alert(`you swiped on element with id ${el.id} to ${up} direction`)); // source code
+  // Tune deltaMin according to your needs. Near 0 it will almost
+  // always trigger, with a big value it can never trigger.
+
+  function detectSwipe(id, func) {
+    let deltaMin = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 90;
+    const swipe_det = {
+      sX: 0,
+      sY: 0,
+      eX: 0,
+      eY: 0
+    }; // Directions enumeration
+
+    const directions = Object.freeze({
+      UP: 'up',
+      DOWN: 'down',
+      RIGHT: 'right',
+      LEFT: 'left'
+    });
+    let direction = null;
+    const el = document.querySelector(id);
+    el.addEventListener('touchstart', function (e) {
+      const t = e.touches[0];
+      swipe_det.sX = t.screenX;
+      swipe_det.sY = t.screenY;
+    }, false);
+    el.addEventListener('touchmove', function (e) {
+      // Prevent default will stop user from scrolling, use with care
+      // e.preventDefault();
+      const t = e.touches[0];
+      swipe_det.eX = t.screenX;
+      swipe_det.eY = t.screenY;
+    }, false);
+    el.addEventListener('touchend', function (e) {
+      const deltaX = swipe_det.eX - swipe_det.sX;
+      const deltaY = swipe_det.eY - swipe_det.sY; // Min swipe distance, you could use absolute value rather
+      // than square. It just felt better for personnal use
+
+      if (deltaX ** 2 + deltaY ** 2 < deltaMin ** 2) {
+        return;
+      } // horizontal
+
+
+      if (deltaY === 0 || Math.abs(deltaX / deltaY) > 1) {
+        direction = deltaX > 0 ? directions.RIGHT : directions.LEFT;
+      } else {
+        direction = deltaY > 0 ? directions.UP : directions.DOWN;
+      } // vertical
+
+
+      if (direction && typeof func === 'function') {
+        func(el, direction);
+      }
+
+      direction = null;
+    }, false);
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (swipeBurger2);
+
+/***/ }),
+
 /***/ "./src/js/services/default.js":
 /*!************************************!*\
   !*** ./src/js/services/default.js ***!
@@ -958,13 +1030,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_language__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/language */ "./src/js/components/language.js");
 /* harmony import */ var _services_default__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./services/default */ "./src/js/services/default.js");
 /* harmony import */ var _modules_burger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/burger */ "./src/js/modules/burger.js");
-/* harmony import */ var _libs_spoller__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./libs/spoller */ "./src/js/libs/spoller.js");
-/* harmony import */ var _libs_slider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./libs/slider */ "./src/js/libs/slider.js");
-/* harmony import */ var _libs_dinamycAdaptiv__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./libs/dinamycAdaptiv */ "./src/js/libs/dinamycAdaptiv.js");
-/* harmony import */ var _libs_tests__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./libs/tests */ "./src/js/libs/tests.js");
-/* harmony import */ var _modules_header__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/header */ "./src/js/modules/header.js");
-/* harmony import */ var _modules_scroll__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/scroll */ "./src/js/modules/scroll.js");
-/* harmony import */ var _components_portfolio__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/portfolio */ "./src/js/components/portfolio.js");
+/* harmony import */ var _modules_swipeBurger2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/swipeBurger2 */ "./src/js/modules/swipeBurger2.js");
+/* harmony import */ var _libs_spoller__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./libs/spoller */ "./src/js/libs/spoller.js");
+/* harmony import */ var _libs_slider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./libs/slider */ "./src/js/libs/slider.js");
+/* harmony import */ var _libs_dinamycAdaptiv__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./libs/dinamycAdaptiv */ "./src/js/libs/dinamycAdaptiv.js");
+/* harmony import */ var _libs_tests__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./libs/tests */ "./src/js/libs/tests.js");
+/* harmony import */ var _modules_header__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/header */ "./src/js/modules/header.js");
+/* harmony import */ var _modules_scroll__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/scroll */ "./src/js/modules/scroll.js");
+/* harmony import */ var _components_portfolio__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/portfolio */ "./src/js/components/portfolio.js");
+
 
 
 
@@ -978,16 +1052,17 @@ __webpack_require__.r(__webpack_exports__);
 
 window.onload = function () {
   (0,_components_language__WEBPACK_IMPORTED_MODULE_0__["default"])();
-  (0,_libs_tests__WEBPACK_IMPORTED_MODULE_6__["default"])();
+  (0,_libs_tests__WEBPACK_IMPORTED_MODULE_7__["default"])();
   (0,_services_default__WEBPACK_IMPORTED_MODULE_1__["default"])(); //Buid
 
-  (0,_components_portfolio__WEBPACK_IMPORTED_MODULE_9__["default"])();
-  (0,_modules_burger__WEBPACK_IMPORTED_MODULE_2__["default"])(); // spoller();
+  (0,_components_portfolio__WEBPACK_IMPORTED_MODULE_10__["default"])();
+  (0,_modules_burger__WEBPACK_IMPORTED_MODULE_2__["default"])();
+  (0,_modules_swipeBurger2__WEBPACK_IMPORTED_MODULE_3__["default"])(); // spoller();
   // slider();
 
-  (0,_libs_dinamycAdaptiv__WEBPACK_IMPORTED_MODULE_5__["default"])();
-  (0,_modules_header__WEBPACK_IMPORTED_MODULE_7__["default"])();
-  (0,_modules_scroll__WEBPACK_IMPORTED_MODULE_8__["default"])();
+  (0,_libs_dinamycAdaptiv__WEBPACK_IMPORTED_MODULE_6__["default"])();
+  (0,_modules_header__WEBPACK_IMPORTED_MODULE_8__["default"])();
+  (0,_modules_scroll__WEBPACK_IMPORTED_MODULE_9__["default"])();
 };
 }();
 /******/ })()
