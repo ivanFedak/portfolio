@@ -41,7 +41,17 @@ const portfolio = ()=>{
             img: 'musicker.png',
             title: 'Listen To Music Any Time Enjoy Landing Page',
         },
-    ]
+        {
+            href: 'https://ivan20050120.github.io/creamBride/',
+            img: 'cream.png',
+            title: 'Buy Bride Cream',
+        },
+        {
+            href: 'https://ivan20050120.github.io/spendMoney/',
+            img: 'spend.png',
+            title: 'Spend Elon Musk Money',
+        },
+    ];
 
 
 
@@ -61,7 +71,7 @@ const portfolio = ()=>{
                     <a href="${href}"  target="_blank"class="portfolio__link">${title}</a>
                 </div>
                 
-            `
+            `;
 
             document.querySelector('.portfolio__body').appendChild(card);
 
